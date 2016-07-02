@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UrlExtractor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VgW-Yu-dsb">
+                                <rect key="frame" x="248" y="105" width="104" height="21"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bxo-wb-heV">
+                                        <rect key="frame" x="0.0" y="0.0" width="104" height="21"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21z-9u-j4V">
+                                                <rect key="frame" x="0.0" y="0.0" width="104" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="104" id="Ka0-Hr-dll"/>
+                                                    <constraint firstAttribute="height" constant="21" id="fbG-Kb-8Bz"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="www.cloudadic.com" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="beh-aS-MV9">
+                                <rect key="frame" x="180" y="156" width="239" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="239" id="H4I-Gi-Crg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IjO-bq-yU8">
+                                <rect key="frame" x="276" y="229" width="49" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W2Y-Me-htY"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="557-GL-hGx">
+                                <rect key="frame" x="197" y="276" width="222" height="225"/>
+                                <color key="backgroundColor" red="0.21172208340000001" green="1" blue="0.16715026199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="222" id="PvU-fc-iEQ"/>
+                                    <constraint firstAttribute="height" constant="225" id="fkm-F1-uHU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VgW-Yu-dsb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3M6-Ta-SQw"/>
+                            <constraint firstItem="IjO-bq-yU8" firstAttribute="top" secondItem="beh-aS-MV9" secondAttribute="bottom" constant="43" id="IDV-ds-ljV"/>
+                            <constraint firstItem="557-GL-hGx" firstAttribute="trailing" secondItem="beh-aS-MV9" secondAttribute="trailing" id="JwF-ub-XHi"/>
+                            <constraint firstItem="beh-aS-MV9" firstAttribute="top" secondItem="VgW-Yu-dsb" secondAttribute="bottom" constant="30" id="a6k-aX-Es9"/>
+                            <constraint firstItem="VgW-Yu-dsb" firstAttribute="centerX" secondItem="IjO-bq-yU8" secondAttribute="centerX" id="eSE-rK-beO"/>
+                            <constraint firstItem="557-GL-hGx" firstAttribute="top" secondItem="IjO-bq-yU8" secondAttribute="bottom" constant="17" id="hd8-4e-at7"/>
+                            <constraint firstItem="VgW-Yu-dsb" firstAttribute="centerX" secondItem="beh-aS-MV9" secondAttribute="centerX" id="sYo-Bv-rjO"/>
+                            <constraint firstItem="VgW-Yu-dsb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="85" id="yX7-0u-z9M"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="displayLabel" destination="557-GL-hGx" id="h7m-aF-ltj"/>
+                        <outlet property="webAddress" destination="beh-aS-MV9" id="UR0-dI-QjI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="453" y="356"/>
+        </scene>
+    </scenes>
+</document>
