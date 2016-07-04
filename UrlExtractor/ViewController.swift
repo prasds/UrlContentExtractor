@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, NSURLConnectionDelegate {
 
     let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     
@@ -23,26 +23,73 @@ class ViewController: UIViewController {
     
     @IBAction func submitButton(sender: UIButton) {
         print("button pressed")
+
+            let urlPath: String = "http://54.153.121.25:8000/buildings"
+            let url: NSURL = NSURL(string: urlPath)!
+            let task = NSURLSession.sharedSession().dataTaskWithURL(url){
+            
+            (data, response, error) in
+            
+            let httpResponse: NSHTTPURLResponse = response as! NSHTTPURLResponse
+            let statusCode = httpResponse.statusCode
+            if statusCode == 200 {
+                
+                let webString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                
+                var replacedStr = webString!.stringByReplacingOccurrencesOfString("u'_id':", withString: "\"id\":")
+                
+                replacedStr = replacedStr.stringByReplacingOccurrencesOfString("':", withString: ":")
+                
+                replacedStr = replacedStr.stringByReplacingOccurrencesOfString("ObjectId('", withString: "\"")
+                
+                replacedStr = replacedStr.stringByReplacingOccurrencesOfString("')", withString: "\"")
+                
+                replacedStr = replacedStr.stringByReplacingOccurrencesOfString("u'", withString: "")
+                
+                replacedStr = replacedStr.stringByReplacingOccurrencesOfString("}{", withString: "},{")
+                
+                replacedStr = "{ \"places\": [" + replacedStr + "] }"
+                
+                print(replacedStr)
+                
+                let myNSString = replacedStr as NSString
+                
+                let myNSData = myNSString.dataUsingEncoding(NSUTF8StringEncoding)!
+                
+                
+                do{
+                    
+                    let json = try NSJSONSerialization.JSONObjectWithData(myNSData, options:.AllowFragments)
+                    
+                    if let places = json["places"] as? [[String: AnyObject]] {
+                        
+                        for place in places {
+                            
+                            if let id  = place["id"] as? String {
+                                
+                                if let name = place["name"] as? String {
+                                    print(id,name)
+                                }
+                                
+                            }
+                        }
+                        
+                    }
+                    
+                }catch {
+                    print("Error with Json: \(error)")
+                }
+
+
+            
+        }
+        }
         
+        task.resume()
 
         
-        //displayLabel.text = webAddress.text
         
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        let inputUrl = NSURL(string: "http://"+(webAddress?.text)!)
-        
-        print(inputUrl)
-        
-        do {
-            let htmlSource = try String(contentsOfURL: inputUrl!, encoding: NSUTF8StringEncoding)
-            print(htmlSource)
-            displayLabel.text = htmlSource
-        }
-        catch let error as NSError {
-            print("Ooops! Something went wrong: \(error)")
-        }
-
     }
     override func viewDidLoad() {
         super.viewDidLoad()
